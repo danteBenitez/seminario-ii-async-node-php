@@ -12,6 +12,7 @@ Incluye:
 ## Requisitos
 
 - Instalación de [XAMPP](https://www.apachefriends.org/es/download.html) o [Apache](https://httpd.apache.org/)
+- Instalación de [Node.js](https://nodejs.org/en)
 
 ## Instrucciones
 
