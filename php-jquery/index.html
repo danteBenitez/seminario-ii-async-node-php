@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Ejecución sincrónica y asincrónica con AJAX</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h2>Ejecución sincrónica</h2>
+  <button onclick="ejecutarSincronicamente()">Ejecutar funciones sincrónicamente</button>
+  <div id="resultadoSincronico"></div>
+
+  <h2>Ejecución asincrónica</h2>
+  <button onclick="ejecutarAsincronicamente()">Ejecutar funciones asincrónicamente</button>
+  <div id="resultadoAsincronico"></div>
+
+
+	<script src="jquery-3.7.1.min.js"></script>
+	
+  <script>
+    function ejecutarSincronicamente() {
+	
+	
+      $.ajax({
+        url: 'proceso1.php',
+        type: 'POST',
+        async: false,
+        success: function(data) {
+			$('#resultadoSincronico').append(' <br>' + data);
+        }
+      });
+	  
+	  
+	  $.ajax({
+        url: 'proceso2.php',
+        type: 'POST',
+        async: false,
+        success: function(data) {
+			$('#resultadoSincronico').append('<br> ' + data);
+        }
+      });
+	  
+	  
+    }
+
+    function ejecutarAsincronicamente() {
+	
+	
+      $.ajax({
+        url: 'proceso1.php',
+        type: 'POST',
+        success: function(data) {
+          $('#resultadoAsincronico').append(' <br> ' + data);
+        }
+      });
+
+      $.ajax({
+        url: 'proceso2.php',
+        type: 'POST',
+        success: function(data) {
+          $('#resultadoAsincronico').append(' <br> ' + data);
+        }
+      });
+    }
+  </script>
+</body>
+</html>

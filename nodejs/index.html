@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Ejecución sincrónica y asincrónica con AJAX y Node.js</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h2>Ejecución sincrónica</h2>
+  <button onclick="ejecutarSincronicamente()">Ejecutar funciones sincrónicamente</button>
+  <div id="resultadoSincronico"></div>
+
+  <h2>Ejecución asincrónica</h2>
+  <button onclick="ejecutarAsincronicamente()">Ejecutar funciones asincrónicamente</button>
+  <div id="resultadoAsincronico"></div>
+
+  <script>
+    function ejecutarSincronicamente() {
+      $.ajax({
+        url: 'http://localhost:4455/proceso1', // Cambia la URL a la del servidor Node.js
+        type: 'POST',
+        async: false,
+        success: function(data) {
+          $('#resultadoSincronico').append(' <br>' + data);
+        }
+      });
+
+      $.ajax({
+        url: 'http://localhost:4455/proceso2', // Cambia la URL a la del servidor Node.js
+        type: 'POST',
+        async: false,
+        success: function(data) {
+          $('#resultadoSincronico').append('<br> ' + data);
+        }
+      });
+    }
+
+    function ejecutarAsincronicamente() {
+      $.ajax({
+        url: 'http://localhost:4455/proceso1', // Cambia la URL a la del servidor Node.js
+        type: 'POST',
+        success: function(data) {
+          $('#resultadoAsincronico').append(' <br> ' + data);
+        }
+      });
+
+      $.ajax({
+        url: 'http://localhost:4455/proceso2', // Cambia la URL a la del servidor Node.js
+        type: 'POST',
+        success: function(data) {
+          $('#resultadoAsincronico').append(' <br> ' + data);
+        }
+      });
+    }
+  </script>
+</body>
+</html>
